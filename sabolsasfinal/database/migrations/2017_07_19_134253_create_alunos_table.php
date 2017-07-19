@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMatraprovsTable extends Migration
+class CreateAlunosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,17 @@ class CreateMatraprovsTable extends Migration
      */
     public function up()
     {
-        Schema::create('matraprovs', function (Blueprint $table) {
+        Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('cpf')->unique();
             $table->integer('matricula')->unique();
+            $table->string('email')->unique();
+            $table->boolean('bolsa');
+            $table->integer('semestre_entrada');
+            $table->integer('duracao_bolsa');
+            $table->decimal('nota', 5, 2);
+            $table->decimal('notap', 5, 2);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -30,6 +36,6 @@ class CreateMatraprovsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matraprovs');
+        Schema::dropIfExists('alunos');
     }
 }

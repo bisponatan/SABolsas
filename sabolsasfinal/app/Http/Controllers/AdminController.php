@@ -27,7 +27,13 @@ class AdminController extends Controller
     public function list_u(){
 
       $resposta = User::all();
-      return view('listauser')-> with('resposta', $resposta);
+      return view('telas.listauser')-> with('resposta', $resposta);
+    }
+
+    public function list_a(){
+
+      $resposta = Admin::all();
+      return view('telas.listadmin')-> with('resposta', $resposta);
     }
 
 
@@ -38,34 +44,23 @@ class AdminController extends Controller
           $params = User::find($id);
           echo $params->name;
           if(empty($params)) {
-            return "Esse Aluno não existe";
+            return "Esse Usuario não existe";
           }
           Admin::create([
               'name' => $params['name'],
               'email' => $params['email'],
               'password' => bcrypt($params['password']),
           ]);
-          //$resposta = new Admin(array($params->name,$params->email, $params->password));
-          //$resposta->save();
-          //var_dump($params);
-          //return redirect ()-> action('AdminController@list_u');
-          //var_dump($resposta)
-        /*
-        public function tadmin_u($id , Request $request){
-          $params = $request->all();
-          */
-          return view('/home');
+
+          return redirect ()-> action('AdminController@list_u');;
         }
-    /*
-    public function tadmin($id){
 
-      $params = User::find($id);
+    public function tuser($id){
 
-      $resposta = new Admin($params);
-      $resposta->save();
+      $params = Admin::find($id);
+      $params->delete();
       return redirect ()-> action('AdminController@list_u');
 
-    }*/
-
+    }
 
 }

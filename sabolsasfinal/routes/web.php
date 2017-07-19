@@ -25,7 +25,9 @@ Route::get('/users/logout', 'Auth\AdminLoginController@userlogout')->name('user.
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/luser','AdminController@list_u');
+    Route::get('/ladmin','AdminController@list_a');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   });
 Route::get('/tadmin/{id}', 'AdminController@tadmin');
-Route::post('/tu/{id}', 'AdminController@tadmin_u');
+
+Route::get('/tuser/{id}', 'AdminController@tuser');
