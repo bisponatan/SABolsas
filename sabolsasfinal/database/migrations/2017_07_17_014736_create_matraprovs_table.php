@@ -15,10 +15,10 @@ class CreateMatraprovsTable extends Migration
     {
         Schema::create('matraprovs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable();
+            $table->string('name');
+            //$table->integer('cpf')->unique();;
+            //$table->integer('matricula')->unique();;
             $table->string('email')->unique();
-            $table->integer('cpf')->unique();
-            $table->integer('matricula')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

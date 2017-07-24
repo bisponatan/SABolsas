@@ -31,6 +31,7 @@ class AdminController extends Controller
     public function list_u(){
 
       $resposta = User::all();
+<<<<<<< HEAD
       return view('telas.listauser')-> with('resposta', $resposta);
     }
 
@@ -52,6 +53,9 @@ class AdminController extends Controller
 
       $resposta = Admin::all();
       return view('telas.listadmin')-> with('resposta', $resposta);
+=======
+      return view('listauser')-> with('resposta', $resposta);
+>>>>>>> 04f2d95f419df84e0753a7b7ac9bd639cb4c335e
     }
 
 
@@ -62,13 +66,18 @@ class AdminController extends Controller
           $params = User::find($id);
           echo $params->name;
           if(empty($params)) {
+<<<<<<< HEAD
             return "Esse Usuario não existe";
+=======
+            return "Esse Aluno não existe";
+>>>>>>> 04f2d95f419df84e0753a7b7ac9bd639cb4c335e
           }
           Admin::create([
               'name' => $params['name'],
               'email' => $params['email'],
               'password' => bcrypt($params['password']),
           ]);
+<<<<<<< HEAD
 
           return redirect ()-> action('AdminController@list_u');;
         }
@@ -127,6 +136,29 @@ public function editado_al($id){
 
   return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
 }
+=======
+          //$resposta = new Admin(array($params->name,$params->email, $params->password));
+          //$resposta->save();
+          //var_dump($params);
+          //return redirect ()-> action('AdminController@list_u');
+          //var_dump($resposta)
+        /*
+        public function tadmin_u($id , Request $request){
+          $params = $request->all();
+          */
+          return view('/home');
+        }
+    /*
+    public function tadmin($id){
+
+      $params = User::find($id);
+
+      $resposta = new Admin($params);
+      $resposta->save();
+      return redirect ()-> action('AdminController@list_u');
+
+    }*/
+>>>>>>> 04f2d95f419df84e0753a7b7ac9bd639cb4c335e
 
 
 }
