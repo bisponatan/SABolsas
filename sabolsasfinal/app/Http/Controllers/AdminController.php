@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Admin;
 use App\User;
-use Illuminate\Http\Request;
+use App\Aluno;
+use App\Matraprov;
+use App\Bolsa;
+use Request;
 
 class AdminController extends Controller
 {
@@ -28,6 +32,20 @@ class AdminController extends Controller
 
       $resposta = User::all();
       return view('telas.listauser')-> with('resposta', $resposta);
+    }
+
+    public function cad_mat(){
+
+      return view('telas.cadmat');
+
+    }
+    public function adiciona_m(){
+
+      $params = Request::all();
+      $resposta = new Matraprov($params);
+      $resposta->save();
+
+      return redirect ()-> action('AdminController@list_u');
     }
 
     public function list_a(){
@@ -62,5 +80,53 @@ class AdminController extends Controller
       return redirect ()-> action('AdminController@list_u');
 
     }
+//Funções para Alunos
+
+public function list_al(){
+
+  $resposta = Aluno::all();
+  return view('telas.listaalunos')-> with('resposta', $resposta);
+}
+
+public function cad_al(){
+  return view('telas.cad_aluno');
+}
+
+
+public function adiciona_al(){
+
+  $params = Request::all();
+  $resposta = new Aluno($params);
+  $resposta->save();
+
+  return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
+}
+
+public function remove($id){
+
+  $resposta = Aluno::find($id);
+  $resposta->delete();
+
+  return redirect ()-> action('AdminController@list_a');
+}
+
+public function edit_al($id){
+
+  $resposta = Aluno::find($id);
+  if(empty($resposta)) {
+    return "Esse Aluno não existe";
+  }
+  return view('telas.edita')->with('r', $resposta);
+  //var_dump($resposta);
+}
+
+public function editado_al($id){
+  $params = $request->all();
+  $produto = Aluno:: findOrFail($id);
+  $produto->fill($params)->save();
+
+  return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
+}
+
 
 }

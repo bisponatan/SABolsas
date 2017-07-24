@@ -30,11 +30,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -52,6 +48,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'cpf' => 'required|integer|unique:users',
+            'matricula' => 'required|integer|unique:users',
         ]);
     }
 
@@ -65,9 +63,11 @@ class RegisterController extends Controller
       if(Matraprov::where('email', '=', $data['email'])->exists() ){
         return User::create([
             'name' => $data['name'],
+            'cpf' => $data['cpf'],
+            'matricula' => $data['matricula'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
       }
     }
-}
+  }

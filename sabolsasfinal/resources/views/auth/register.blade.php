@@ -24,6 +24,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
+                            <label for="cpf" class="col-md-4 control-label">CPF</label>
+
+                            <div class="col-md-6">
+                                <input id="cpf" type="number" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+
+                                @if ($errors->has('cpf'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('matricula') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('matricula') ? ' has-error' : '' }}">
+                            <label for="matricula" class="col-md-4 control-label">Matricula</label>
+
+                            <div class="col-md-6">
+                                <input id="matricula" type="number" class="form-control" name="matricula" value="{{ old('matricula') }}" required autofocus>
+
+                                @if ($errors->has('matricula'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('matricula') }}</strong>
+                                @endif
+                              </span>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

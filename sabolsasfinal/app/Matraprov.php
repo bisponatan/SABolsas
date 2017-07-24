@@ -10,7 +10,7 @@ class Matraprov extends Model
   use Notifiable;
 
   protected $fillable = [
-      'email',
+      'email','cpf', 'matricula',
   ];
 
 }
