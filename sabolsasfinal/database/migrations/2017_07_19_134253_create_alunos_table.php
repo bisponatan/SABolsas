@@ -11,8 +11,7 @@ class CreateAlunosTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -20,7 +19,7 @@ class CreateAlunosTable extends Migration
             $table->integer('cpf')->unique();
             $table->integer('matricula')->unique();
             $table->string('email')->unique();
-            $table->boolean('bolsa')->nullable();
+            $table->string('bolsa')->nullable();
             $table->integer('semestre_entrada');
             $table->integer('duracao_bolsa')->nullable();
             $table->decimal('nota', 5, 2);

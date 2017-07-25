@@ -1,4 +1,4 @@
-@extends('layouts/principal')
+@extends('layouts/principal2')
 @section('content')
   <p>
   <h1> Cadastro Usuario </h1>

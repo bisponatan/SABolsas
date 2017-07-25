@@ -1,4 +1,4 @@
-@extends('layouts/principal')
+@extends('layouts/principal2')
 @section('content')
   <p>
     @if(old("name"))

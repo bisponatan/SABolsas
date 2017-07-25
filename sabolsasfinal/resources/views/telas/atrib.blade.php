@@ -1,14 +1,26 @@
-@extends('layouts.principal')
+@extends('layouts.principal2')
 
 @section('content')
 <p>
 <h1>Atribuir Bolsa a  {{$r->name}}</h1>
 
-<form action="#/{{$r->id}}" method="post">
+<form action="/atrba/{{$r->id}}" method="post">
 
-  <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+  <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+
+  <div class="form-group">
+    <label>Formentador </label>
+    <input name="bolsa" required="requiored" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label>Duração(meses) </label>
+    <input name="duracao" type="number" required="requiored" pattern="[0-9]+$" class="form-control"/>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">Atribuir</button>
 </form>
   <br>
-<a href="/lusuarios "> <button class="btn btn-primary btn-block">Cancelar</button> </a>
+<a href="/lalunos"> <button class="btn btn-primary btn-block">Cancelar</button> </a>
 
 @stop

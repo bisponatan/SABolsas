@@ -8,7 +8,7 @@ class Bolsa extends Model
 {
   protected $table = 'bolsas';
 
-  protected $fillable = array('name', 'formentador', 'duracao');
+  protected $fillable = array('formentador', 'duracao');
 
   protected $guarded = ['id'];
 

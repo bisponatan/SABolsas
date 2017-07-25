@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
 
 Route::get('/lalunos','indexController@list_al');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users/logout', 'Auth\AdminLoginController@userlogout')->name('user.logout');

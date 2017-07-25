@@ -15,7 +15,7 @@ class CreateBolsasTable extends Migration
     {
         Schema::create('bolsas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('formentador');
             $table->integer('duracao');
             $table->rememberToken();

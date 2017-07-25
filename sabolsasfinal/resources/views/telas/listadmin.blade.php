@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.principal2')
 @section('content')
   <p>
   <div class="table-responsive">
@@ -14,7 +14,7 @@
         <td>{{$r->nome}}</td>
         <td><?= $r->matricula ?> </td>
         <td><?= $r->email ?> </td>
-        <td><a href="{{action('AdminController@tuser', $r->id)}}"> TUser</a></td>
+        <td><a href="{{action('AdminController@tuser', $r->id)}}"> Tornar Usuário</a></td>
         </tr>
       <?php endforeach ?>
     </table>

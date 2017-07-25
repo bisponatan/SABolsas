@@ -148,10 +148,11 @@ public function atrb($id){
 public function atrb_a($id){
 
   $params = Request::all();
-  $produto = Aluno::findOrFail($id);
-  $produto->fill($params)->save();
+  $resposta = Aluno::findOrFail($id);
+  //$this->update(['bolsa' => DB::raw('bolsa')]);
+  $resposta->fill($params)->save();
 
-  return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
+  return redirect ()-> action('AdminController@list_a');
 }
 
 

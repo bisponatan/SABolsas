@@ -1,13 +1,12 @@
-@extends('layouts.principal')
+@extends('layouts.principal2')
 @section('content')
   <p>
   <div class="table-responsive">
     <table ID= "alter" class=" tabbe table-striped table-bordered table-hover">
       <tr>
-        <td>Nome    </td>
-        <td>Matricula    </td>
-        <td>Nota    </td>
-        <td>Orientador   </td>
+        <td> Nome    </td>
+        <td> Email    </td>
+        <td> Matricula    </td>
         </tr>
       <h1>Listagem de Usuarios</h1>
       <?php foreach ($resposta as $r): ?>
