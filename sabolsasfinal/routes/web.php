@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/lalunos','indexController@list_al');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -43,6 +45,9 @@ Route::get('/users/logout', 'Auth\AdminLoginController@userlogout')->name('user.
   Route::post('/adiciona_m','AdminController@adiciona_m');
   Route::get('/tadmin/{id}', 'AdminController@tadmin');
   Route::get('/tuser/{id}', 'AdminController@tuser');
+  Route::get('/atrb/{id}', 'AdminController@atrb');
+  Route::post('/atrba/{id}', 'AdminController@atrb_a');
+
 
 Route::prefix('user')->group(function() {
   Route::get('/login', 'Auth\UserLoginController@showLoginForm')->name('user.login');

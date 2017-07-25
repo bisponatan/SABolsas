@@ -2,9 +2,9 @@
 
 @section('content')
 <p>
-<h1>Alterar aluno {{$r->nome}}</h1>
+<h1>Alterar aluno </h1>
 
-<form action="editadoa/{{$r->id}}" method="post">
+<form action="/editadoa/{{$r->id}}" method="post">
 
   <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 

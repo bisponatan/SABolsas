@@ -62,7 +62,7 @@ class AdminController extends Controller
           //$params = User::where('id',$id)->first();
 
           $params = User::find($id);
-          echo $params->name;
+          //echo $params->name;
           if(empty($params)) {
 
             return "Esse Aluno não existe";
@@ -70,6 +70,8 @@ class AdminController extends Controller
           }
           Admin::create([
               'name' => $params['name'],
+              'cpf' => $params['cpf'],
+              'matricula' => $params['matricula'],
               'email' => $params['email'],
               'password' => bcrypt($params['password']),
           ]);
@@ -125,32 +127,33 @@ public function edit_al($id){
 }
 
 public function editado_al($id){
-  $params = $request->all();
-  $produto = Aluno:: findOrFail($id);
+
+  $params = Request::all();
+  $produto = Aluno::findOrFail($id);
   $produto->fill($params)->save();
 
   return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
 }
 
-          //$resposta = new Admin(array($params->name,$params->email, $params->password));
-          //$resposta->save();
-          //var_dump($params);
-          //return redirect ()-> action('AdminController@list_u');
-          //var_dump($resposta)
-        /*
-        public function tadmin_u($id , Request $request){
-          $params = $request->all()
-        }
-    /*
-    public function tadmin($id){
+public function atrb($id){
 
-      $params = User::find($id);
+  $resposta = Aluno::find($id);
+  if(empty($resposta)) {
+    return "Esse Aluno não existe";
+  }
+  return view('telas.atrib')->with('r', $resposta);
+  //var_dump($resposta);
+}
 
-      $resposta = new Admin($params);
-      $resposta->save();
-      return redirect ()-> action('AdminController@list_u');
+public function atrb_a($id){
 
-    }*/
+  $params = Request::all();
+  $produto = Aluno::findOrFail($id);
+  $produto->fill($params)->save();
+
+  return redirect ()-> action('AdminController@list_a') ->withInput(Request::only('nome'));
+}
+
 
 
 }

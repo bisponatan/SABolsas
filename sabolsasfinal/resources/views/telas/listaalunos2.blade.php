@@ -1,4 +1,4 @@
-@extends('layouts/principal')
+@extends('layouts/principal2')
 @section('content')
   <p>
     @if(old("name"))
@@ -20,11 +20,7 @@
         <td><?= $r->matricula ?> </td>
         <td><?= $r->nota ?> </td>
         <td><?= $r->orientador ?> </td>
-        <td> <a href="/edita/<?= $r->id ?>">Editar</a></td>
-        <td><a href="{{action('AdminController@remove', $r->id)}}"> Remover</a></td>
-        <td><a href="{{action('AdminController@atrb', $r->id)}}"> Atribuir Bolsa</a></td>
-
-        </tr>
+      </tr>
       <?php endforeach ?>
     </table>
   </div>
